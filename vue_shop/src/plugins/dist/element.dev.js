@@ -31,3 +31,5 @@ _vue["default"].use(_elementUi.Submenu);
 _vue["default"].use(_elementUi.MenuItemGroup);
 
 _vue["default"].use(_elementUi.MenuItem);
+
+_vue["default"].prototype.$message = _elementUi.Message;

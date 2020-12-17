@@ -29,8 +29,8 @@ _vueRouter["default"].prototype.push = function push(location) {
 
 var routes = [{
   path: '/',
-  name: 'Login',
-  component: _Login["default"]
+  // 路由重定向
+  redirect: '/login'
 }, {
   path: '/login',
   name: 'Login',

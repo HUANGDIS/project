@@ -15,8 +15,8 @@ VueRouter.prototype.push = function push(location) {
 const routes = [
   {
     path: '/',
-    name: 'Login',
-    component: Login
+    // 路由重定向
+    redirect: '/login'
   },
   {
     path: '/login',
