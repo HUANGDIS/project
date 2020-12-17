@@ -4,25 +4,30 @@
       <div class="img">
         <img src="../assets/logo.png">
       </div>
-      <el-form class="login_form">
-        <el-form-item>
+      <el-form
+        class="login_form"
+        :rules="loginFormRules"
+        :model="loginForm"
+        ref="loginFormRef"
+      >
+        <el-form-item prop="username">
           <el-input
             prefix-icon="el-icon-user-solid"
-            v-model="username"
+            v-model="loginForm.username"
           >
           </el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="password">
           <el-input
             type="password"
             prefix-icon="el-icon-goods"
-            v-model="password"
+            v-model="loginForm.password"
           >
           </el-input>
         </el-form-item>
         <el-form-item class="btns">
           <el-button @click='check'>登录</el-button>
-          <el-button @click="clear">重置</el-button>
+          <el-button @click="clear()">重置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -38,17 +43,30 @@ export default {
   },
   data() {
     return {
-      username: '',
-      password: '',
+      loginForm: {
+        username: 'admin',
+        password: 'admin',
+      },
+      loginFormRules: {
+        username: [
+          { required: true, message: '请输入登录名称', trigger: 'blur' },
+          { min: 3, max: 10, message: '长度在3到10之间', trigger: 'blur' },
+        ],
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { min: 3, max: 15, message: '长度在3到15之间', trigger: 'blur' },
+        ],
+      },
     }
   },
   methods: {
     check() {
-      if (this.username === 'admin' && this.password === 'admin') {
+      if (this.loginForm.username === 'admin' && this.loginForm.password === 'admin') {
+        this.$router.push('/home')
       }
     },
     clear() {
-      ;(this.username = ''), (this.password = '')
+      this.$refs.loginFormRef.resetFields()
     },
   },
 }

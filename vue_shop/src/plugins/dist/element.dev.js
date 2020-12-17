@@ -13,3 +13,21 @@ _vue["default"].use(_elementUi.Input);
 _vue["default"].use(_elementUi.Form);
 
 _vue["default"].use(_elementUi.FormItem);
+
+_vue["default"].use(_elementUi.Container);
+
+_vue["default"].use(_elementUi.Header);
+
+_vue["default"].use(_elementUi.Main);
+
+_vue["default"].use(_elementUi.Aside);
+
+_vue["default"].use(_elementUi.Menu);
+
+_vue["default"].use(_elementUi.Aside);
+
+_vue["default"].use(_elementUi.Submenu);
+
+_vue["default"].use(_elementUi.MenuItemGroup);
+
+_vue["default"].use(_elementUi.MenuItem);
