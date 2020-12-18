@@ -47,5 +47,11 @@ var routes = [{
 var router = new _vueRouter["default"]({
   routes: routes
 });
+router.beforeEach(function (to, from, next) {
+  if (to.path === '/login') return next();
+  var tokenStr = window.sessionStorage.getItem('token');
+  if (!tokenStr) return next('/login');
+  next();
+});
 var _default = router;
 exports["default"] = _default;

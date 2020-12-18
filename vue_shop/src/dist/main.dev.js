@@ -12,16 +12,25 @@ var _axios = _interopRequireDefault(require("axios"));
 
 require("./assets/css/init.css");
 
+require("./assets/fonts/iconfont.css");
+
 var _less = _interopRequireDefault(require("less"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 //导入全局样式
+// 导入字体图标
 _axios["default"].defaults.baseURL = 'http://119.23.53.78:8888/api/private/v1';
 
 _vue["default"].use(_less["default"]);
 
 _vue["default"].prototype.$http = _axios["default"];
+
+_axios["default"].interceptors.request.use(function (config) {
+  config.headers.Authorization = window.sessionStorage.getItem('token');
+  return config;
+});
+
 _vue["default"].config.productionTip = false;
 new _vue["default"]({
   router: _router["default"],

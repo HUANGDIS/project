@@ -1,51 +1,43 @@
 <template>
   <div class="home">
-    <el-container>
-      <el-header>Header</el-header>
+    <el-container class="container">
+      <el-header>
+        <div class="title">电商后台管理系统</div>
+        <el-button
+          type="info"
+          @click="dropOut"
+        >退出</el-button>
+      </el-header>
       <el-container>
-        <el-aside width="200px">
+        <el-aside width="300px">
           <el-menu
-            default-active="2"
-            class="el-menu-vertical-demo"
             @open="handleOpen"
             @close="handleClose"
             background-color="#545c64"
             text-color="#fff"
             active-text-color="#ffd04b"
           >
-            <el-submenu index="1">
-              <template slot="title">
-                <i class="el-icon-location"></i>
-                <span>导航一</span>
-              </template>
-              <el-menu-item-group>
-                <template slot="title">分组一</template>
-                <el-menu-item index="1-1">选项1</el-menu-item>
-                <el-menu-item index="1-2">选项2</el-menu-item>
-              </el-menu-item-group>
-              <el-menu-item-group title="分组2">
-                <el-menu-item index="1-3">选项3</el-menu-item>
-              </el-menu-item-group>
-              <el-submenu index="1-4">
-                <template slot="title">选项4</template>
-                <el-menu-item index="1-4-1">选项1</el-menu-item>
-              </el-submenu>
-            </el-submenu>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              <span slot="title">导航二</span>
-            </el-menu-item>
-            <el-menu-item
-              index="3"
-              disabled
+            <el-submenu
+              :index="item.id+ ''"
+              v-for="item in menus"
+              :key="item.id"
             >
-              <i class="el-icon-document"></i>
-              <span slot="title">导航三</span>
-            </el-menu-item>
-            <el-menu-item index="4">
-              <i class="el-icon-setting"></i>
-              <span slot="title">导航四</span>
-            </el-menu-item>
+              <template slot="title">
+                <i :class="iconObj[item.id]"></i>
+                <span>{{item.authName}}</span>
+              </template>
+              <el-menu-item-group
+                v-for="child in (item.children)"
+                :key="child.id"
+              >
+                <el-menu-item :index=" '/' + child.path">
+                  <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span>{{child.authName}}</span>
+                  </template>
+                </el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
           </el-menu>
         </el-aside>
         <el-main>Main</el-main>
@@ -61,7 +53,28 @@
 export default {
   name: 'Home',
   components: {},
+  data() {
+    return {
+      menus: [],
+      iconObj: {
+        125: 'iconfont icon-user',
+        103: 'iconfont icon-tijikongjian',
+        101: 'iconfont icon-shangpin',
+        102: 'iconfont icon-danju',
+        145: 'iconfont icon-baobiao',
+      },
+    }
+  },
+  created: async function () {
+    const { data: res } = await this.$http.get('menus')
+    console.log(res)
+    if (res.meta.status !== 200) return this.$message.error('获取列表失败')
+    this.menus = res.data
+  },
   methods: {
+    dropOut() {
+      window.sessionStorage.clear(), this.$router.push('/login')
+    },
     handleOpen() {},
     handleClose() {},
   },
@@ -72,5 +85,30 @@ export default {
 .home {
   width: 100%;
   height: 100%;
+  .container {
+    height: 100%;
+    .el-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgb(84, 92, 100);
+      .title {
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+    .el-aside {
+      text-align: left;
+      font-size: 18px;
+      background-color: rgb(84, 92, 100);
+      .el-submenu {
+        i {
+          font-size: 20px;
+          padding-right: 10px;
+        }
+      }
+    }
+  }
 }
 </style>
