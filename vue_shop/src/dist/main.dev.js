@@ -10,6 +10,8 @@ require("./plugins/element.js");
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _moment = _interopRequireDefault(require("moment"));
+
 require("./assets/css/init.css");
 
 require("./assets/fonts/iconfont.css");
@@ -18,8 +20,12 @@ var _less = _interopRequireDefault(require("less"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-//导入全局样式
-// 导入字体图标
+_vue["default"].filter('dateformat', function (dataStr) {
+  var pattern = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'YYYY-MM-DD HH:mm:ss';
+  return (0, _moment["default"])(dataStr).format(pattern);
+}); //导入全局样式
+
+
 _axios["default"].defaults.baseURL = 'http://119.23.53.78:8888/api/private/v1';
 
 _vue["default"].use(_less["default"]);

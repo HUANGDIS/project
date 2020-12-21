@@ -14,7 +14,6 @@
             <el-input
               v-model="queryInfo.query"
               placeholder="请输入内容"
-              class="input-with-select"
               clearable
               @clear="getUserList"
             >

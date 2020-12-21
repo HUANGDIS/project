@@ -4,6 +4,11 @@ import router from './router'
 import './plugins/element.js'
 import axios from 'axios'
 
+import moment from "moment"
+Vue.filter('dateformat', function (dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
+  return moment(dataStr).format(pattern)
+
+})
 //导入全局样式
 import './assets/css/init.css'
 // 导入字体图标

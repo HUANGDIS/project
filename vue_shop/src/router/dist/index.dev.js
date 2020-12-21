@@ -17,11 +17,21 @@ var _About = _interopRequireDefault(require("../components/About.vue"));
 
 var _Welcome = _interopRequireDefault(require("../components/Welcome.vue"));
 
-var _Users = _interopRequireDefault(require("../components/Users.vue"));
+var _Users = _interopRequireDefault(require("../components/user/Users.vue"));
 
-var _Roles = _interopRequireDefault(require("../components/Roles.vue"));
+var _Roles = _interopRequireDefault(require("../components/power/Roles.vue"));
 
-var _Rights = _interopRequireDefault(require("../components/Rights.vue"));
+var _Rights = _interopRequireDefault(require("../components/power/Rights.vue"));
+
+var _Goods = _interopRequireDefault(require("../components/goods/Goods.vue"));
+
+var _Params = _interopRequireDefault(require("../components/goods/Params.vue"));
+
+var _Categories = _interopRequireDefault(require("../components/goods/Categories.vue"));
+
+var _Orders = _interopRequireDefault(require("../components/order/Orders.vue"));
+
+var _Reports = _interopRequireDefault(require("../components/report/Reports.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -57,13 +67,33 @@ var routes = [{
     name: 'Users',
     component: _Users["default"]
   }, {
-    path: '/roless',
+    path: '/roles',
     name: 'Roles',
     component: _Roles["default"]
   }, {
     path: '/rights',
     name: 'Rights',
     component: _Rights["default"]
+  }, {
+    path: '/goods',
+    name: 'Goods',
+    component: _Goods["default"]
+  }, {
+    path: '/params',
+    name: 'Params',
+    component: _Params["default"]
+  }, {
+    path: '/categories',
+    name: 'Categories',
+    component: _Categories["default"]
+  }, {
+    path: '/orders',
+    name: 'Orders',
+    component: _Orders["default"]
+  }, {
+    path: '/reports',
+    name: 'Reports',
+    component: _Reports["default"]
   }]
 }, {
   path: '/about',
