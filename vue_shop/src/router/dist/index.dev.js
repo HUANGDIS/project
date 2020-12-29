@@ -25,6 +25,8 @@ var _Rights = _interopRequireDefault(require("../components/power/Rights.vue"));
 
 var _Goods = _interopRequireDefault(require("../components/goods/Goods.vue"));
 
+var _add = _interopRequireDefault(require("../components/goods/add.vue"));
+
 var _Params = _interopRequireDefault(require("../components/goods/Params.vue"));
 
 var _Categories = _interopRequireDefault(require("../components/goods/Categories.vue"));
@@ -78,6 +80,10 @@ var routes = [{
     path: '/goods',
     name: 'Goods',
     component: _Goods["default"]
+  }, {
+    path: '/goods/add',
+    name: 'Add',
+    component: _add["default"]
   }, {
     path: '/params',
     name: 'Params',

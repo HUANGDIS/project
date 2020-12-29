@@ -8,6 +8,7 @@ import Users from '../components/user/Users.vue'
 import Roles from '../components/power/Roles.vue'
 import Rights from '../components/power/Rights.vue'
 import Goods from '../components/goods/Goods.vue'
+import Add from '../components/goods/add.vue'
 import Params from '../components/goods/Params.vue'
 import Categories from '../components/goods/Categories.vue'
 import Orders from '../components/order/Orders.vue'
@@ -62,6 +63,11 @@ const routes = [
         path: '/goods',
         name: 'Goods',
         component: Goods,
+      },
+      {
+        path: '/goods/add',
+        name: 'Add',
+        component: Add,
       },
       {
         path: '/params',
