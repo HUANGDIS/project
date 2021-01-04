@@ -14,9 +14,13 @@ var _moment = _interopRequireDefault(require("moment"));
 
 require("./assets/css/init.css");
 
+var _vueTableWithTreeGrid = _interopRequireDefault(require("vue-table-with-tree-grid"));
+
 require("./assets/fonts/iconfont.css");
 
 var _less = _interopRequireDefault(require("less"));
+
+var _echarts = _interopRequireDefault(require("echarts"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -26,11 +30,16 @@ _vue["default"].filter('dateformat', function (dataStr) {
 }); //导入全局样式
 
 
+//引入echarts
+_vue["default"].prototype.$echarts = _echarts["default"]; //引入组件
+
 _axios["default"].defaults.baseURL = 'http://119.23.53.78:8888/api/private/v1';
 
 _vue["default"].use(_less["default"]);
 
 _vue["default"].prototype.$http = _axios["default"];
+
+_vue["default"].component('tree-table', _vueTableWithTreeGrid["default"]);
 
 _axios["default"].interceptors.request.use(function (config) {
   config.headers.Authorization = window.sessionStorage.getItem('token');

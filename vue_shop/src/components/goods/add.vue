@@ -40,7 +40,11 @@
         :rules="addFormRules"
       >
         <el-tabs tab-position="left">
-          <el-tab-pane label="基本信息">
+          <el-tab-pane
+            label="基本信息"
+            @tab-click="next(name)"
+            name="0"
+          >
             <el-form-item
               label="商品名称"
               prop="goods_name"
@@ -81,17 +85,28 @@
               ></el-cascader>
             </el-form-item>
           </el-tab-pane>
-          <el-tab-pane label="商品参数">
+          <el-tab-pane
+            label="商品参数"
+            name="1"
+          >
 
           </el-tab-pane>
-          <el-tab-pane label="商品属性">
+          <el-tab-pane
+            label="商品属性"
+            name="2"
+          >
 
           </el-tab-pane>
-          <el-tab-pane label="商品图片">
+          <el-tab-pane
+            label="商品图片"
+            name="3"
+          >
 
           </el-tab-pane>
-          <el-tab-pane label="商品图片">
-
+          <el-tab-pane
+            label="商品内容"
+            name="4"
+          >
           </el-tab-pane>
         </el-tabs>
       </el-form>
@@ -145,11 +160,15 @@ export default {
   methods: {
     async getCateList() {
       const { data: res } = await this.$http.get('categories')
-      console.log(res)
+      // console.log(res)
       this.cateList = res.data
     },
     handleChange(val) {
       console.log(val)
+    },
+    next(val) {
+      console.log(val)
+      this.active = 0
     },
   },
 }

@@ -11,13 +11,18 @@ Vue.filter('dateformat', function (dataStr, pattern = 'YYYY-MM-DD HH:mm:ss') {
 })
 //导入全局样式
 import './assets/css/init.css'
+import TreeTable from 'vue-table-with-tree-grid'
 // 导入字体图标
 import './assets/fonts/iconfont.css'
 import less from 'less'
+
+import echarts from 'echarts' //引入echarts
+Vue.prototype.$echarts = echarts //引入组件
+
 axios.defaults.baseURL = 'http://119.23.53.78:8888/api/private/v1'
 Vue.use(less)
 Vue.prototype.$http = axios
-
+Vue.component('tree-table', TreeTable)
 axios.interceptors.request.use((config) => {
   config.headers.Authorization = window.sessionStorage.getItem('token')
   return config
