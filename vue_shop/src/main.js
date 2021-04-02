@@ -19,7 +19,7 @@ import less from 'less'
 import echarts from 'echarts' //引入echarts
 Vue.prototype.$echarts = echarts //引入组件
 
-axios.defaults.baseURL = 'http://119.23.53.78:8888/api/private/v1'
+axios.defaults.baseURL = 'http://timemeetyou.com:8889/api/private/v1/'
 Vue.use(less)
 Vue.prototype.$http = axios
 Vue.component('tree-table', TreeTable)
